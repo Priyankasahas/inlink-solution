@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.1.1"
 
 gem "rails", "~> 4.1.1"
 
@@ -34,6 +35,8 @@ gem 'jquery-rails'
 gem "devise"
 gem "simple_form"
 gem "rolify"
+
+gem 'rails_12factor'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
