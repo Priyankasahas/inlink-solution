@@ -1,0 +1,12 @@
+<%= simple_form_for @application do |f| %>
+    <%= f.error_notification %>
+
+    <div class="col-md-6">
+      <%= f.input :name %>
+      <%= f.input :description, :as => :text %>
+      <div class="btn btn-group">
+        <%= f.button :submit, 'Submit', :class => 'btn btn-primary' %>
+        <%= link_to 'Cancel', tenant_applications_path, :class => 'btn btn-default' %>
+      </div>
+    </div>
+<% end %>

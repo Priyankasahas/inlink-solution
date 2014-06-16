@@ -1,0 +1,15 @@
+<%= content_for :application_head do %>
+    <%= stylesheet_link_tag "bootstrap-inlink" %>
+<% end %>
+
+<%= content_for :application_content do %>
+    <div class="container vertical-padding">
+
+    </div>
+    <div class="container top-margin">
+      <%= flash_messages if flash_messages? %>
+      <%= content_for?(:page_content) ? yield(:page_content) : yield %>
+    </div>
+<% end %>
+
+<%= render :file => 'layouts/application' %>

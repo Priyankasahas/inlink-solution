@@ -1,0 +1,40 @@
+<div class="col-md-6">
+  <blockquote>
+    <h2 class="lead"><%= @application.name %></h2>
+
+    <p><%= @application.description %></p>
+
+    <div class="btn btn-group">
+      <%= link_to ' Edit', {:action => 'edit', :id => @application.id}, :class => 'btn btn-primary' %>
+      <%= link_to 'Delete', tenant_application_path(@application), :method => :delete, :data => {:confirm => "Are you sure you want to delete this application?"}, :class => 'btn btn-danger' %>
+      <%= link_to ' Done', tenant_applications_path, :class => 'btn btn-default' %>
+    </div>
+  </blockquote>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">Privileges</div>
+      <div class="panel-body">
+        <%= link_to "Add privilege", tenant_application_new_role_privilege_path(@application), :class => "btn btn-success btn-xs pull-right" %><br><br>
+        <table class="table">
+          <tbody>
+          <% @application.role_privileges.each do |rp| %>
+              <tr>
+                <td><%= rp.role_name %></td>
+                <td>
+                  <% rp.privileges.each do |p| %>
+                      <span class="label label-default"><%= p %></span>
+                  <% end %>
+                </td>
+                <td><%= link_to "Edit privilege", edit_role_privilege_path(rp), :class => "btn btn-primary btn-xs" %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

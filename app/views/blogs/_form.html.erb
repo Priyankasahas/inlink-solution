@@ -1,0 +1,15 @@
+<%= tinymce_assets %>
+
+<%= simple_form_for @blog do |f| %>
+    <p>
+      <%= f.input :title %><br />
+    </p>
+    <p>
+      <%= f.label :body %>
+      <%= f.text_area :body, class: "tinymce" %>
+    </p>
+    <%= f.button :submit, class: "btn btn-primary" %>
+    <%= link_to 'Cancel', blogs_path, :class => 'btn btn-default' %>
+<% end %>
+
+<%= tinymce %>

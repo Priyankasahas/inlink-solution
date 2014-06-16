@@ -1,0 +1,15 @@
+<%= simple_form_for @user, html: {autocomplete: 'off'} do |f| %>
+    <%= f.error_notification %>
+
+    <div class="col-md-6">
+      <%= f.input :first_name %>
+      <%= f.input :surname, :as => :string, :label => "Surname" %>
+      <%= f.input :email, :as => :string, :label => "Email" %>
+      <%= f.input :password, :label => "Password" %>
+
+      <div class="btn btn-group">
+        <%= f.button :submit, :class => 'btn btn-primary' %>
+        <%= link_to 'Cancel', users_path, :class => 'btn btn-default' %>
+      </div>
+    </div>
+<% end %>

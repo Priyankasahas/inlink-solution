@@ -1,0 +1,10 @@
+form.form-inline {
+  .control-group {
+    display: inline-block;
+  }
+  label {
+    width: 100px;
+    text-align: right;
+    padding-right: 10px;
+  }
+}

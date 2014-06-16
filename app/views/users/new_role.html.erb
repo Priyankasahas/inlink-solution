@@ -1,0 +1,15 @@
+<%= simple_form_for @user, html: {autocomplete: 'off'}, :url => user_add_role_path, :method => :post do |f| %>
+    <%= f.error_notification %>
+
+    <div class="col-md-6">
+      <%= f.simple_fields_for :role, @user.roles.build do |r| %>
+          <%= r.input :name, priority: ["Tenant"], collection: ["Location Manager", "Concierge", "Content Administrator", "Tenant"], label: "Role" %> <br>
+          <%= r.association :resource, collection: TenantApplication.all.map { |a| [a.name, a.id] }, as: :check_boxes, label: "Applications" %>
+          </div>
+
+          <div class="btn btn-group col-md-9">
+            <%= f.button :submit, 'Add Role', :class => 'btn btn-primary' %>
+            <%= link_to 'Cancel', user_path(@user), :class => 'btn btn-default' %>
+          </div>
+      <% end %>
+<% end %>

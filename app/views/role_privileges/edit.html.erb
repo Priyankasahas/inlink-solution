@@ -1,0 +1,11 @@
+<%= simple_form_for @role_privilege do |f| %>
+    <%= f.input :role_name, priority: ["Tenant"], collection: ["Location Manager", "Concierge", "Content Administrator", "Tenant"], label: "Role" %>
+    <br>
+    <%= f.input :privileges, collection: ["Create", "Read", "Update", "Delete"], as: :check_boxes, label: "Privileges" %>
+
+
+    <div class="btn btn-group col-md-9">
+      <%= f.button :submit, 'Update Privilege', :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', tenant_application_path(@role_privilege.tenant_application), :class => 'btn btn-default' %>
+    </div>
+<% end %>

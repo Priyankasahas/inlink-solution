@@ -1,0 +1,56 @@
+<h1><%= @user.first_name %>, <%= @user.surname %></h1>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">General</div>
+      <div class="panel-body">
+        <table class="table">
+          <tbody>
+          <tr>
+            <th>Name</th>
+            <td><%= @user.first_name %></td>
+          </tr>
+          <tr>
+            <th>Surname</th>
+            <td><%= @user.surname %></td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td><%= @user.email %></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">Access</div>
+      <div class="panel-body">
+        <table class="table">
+          <tbody>
+          <% @roles.each do |role| %>
+              <tr>
+                <th><%= role.resource_type ? TenantApplication.find(role.resource_id).name : "Global:" %></th>
+                <td><span class="label label-default"><%= role.name %></span></td>
+                <td><%= link_to "Remove Role", { :action => 'remove_role', :id => role.id, :user_id => @user.id }, :class => "btn btn-danger btn-xs" %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="btn btn-group">
+  <%= link_to "Add Role", user_new_role_path(@user), :class => "btn btn-success" %>
+  <%= link_to ' Edit User', {:action => 'edit', :id => @user.id}, :class => 'btn btn-primary' %>
+  <%= link_to ' Done', users_path, :class => 'btn btn-default' %>
+</div>
+
+

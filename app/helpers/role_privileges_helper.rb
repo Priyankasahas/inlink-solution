@@ -1,0 +1,2 @@
+module RolePrivilegesHelper
+end

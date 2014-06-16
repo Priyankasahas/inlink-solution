@@ -1,0 +1,17 @@
+<%= simple_form_for @application, :url => tenant_application_add_role_privilege_path, :method => :post do |f| %>
+    <%= f.error_notification %>
+
+    <div class="col-md-6">
+      <%= f.simple_fields_for :role_privilege, @application.role_privileges.build do |r| %>
+          <%= r.input :role_name, priority: ["Tenant"], collection: ["Location Manager", "Concierge", "Content Administrator", "Tenant"], label: "Role" %>
+          <br>
+          <%= r.input :privileges, collection: ["Create", "Read", "Update", "Delete"], as: :check_boxes, label: "Privileges" %>
+
+
+          <div class="btn btn-group col-md-9">
+            <%= f.button :submit, 'Add Privilege', :class => 'btn btn-primary' %>
+            <%= link_to 'Cancel', tenant_application_path(@application), :class => 'btn btn-default' %>
+          </div>
+      <% end %>
+    </div>
+<% end %>
