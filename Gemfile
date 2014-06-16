@@ -5,7 +5,13 @@ gem "rails", "~> 4.1.1"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+group :deployment do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem "pg" # PostgreSQL DB
+end
 
 
 # Gems used only for assets and not required
