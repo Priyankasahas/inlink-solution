@@ -5,7 +5,7 @@ gem "rails", "~> 4.1.1"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :deployment do
+group :development do
   gem 'sqlite3'
 end
 
