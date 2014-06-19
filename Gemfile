@@ -6,7 +6,7 @@ gem "rails", "~> 4.1.1"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :development do
+group :development, :test do
   gem 'sqlite3'
 end
 
@@ -24,6 +24,10 @@ group :assets do
   gem 'bootstrap-sass', '~> 3.1.0'
   gem "compass-rails"
   gem 'tinymce-rails'
+  gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
+  gem 'paperclip'
+  gem 'will_paginate', '~> 3.0'
+  gem "seedbank"
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -35,6 +39,7 @@ gem 'jquery-rails'
 gem "devise"
 gem "simple_form"
 gem "rolify"
+gem "authority"
 
 gem 'rails_12factor'
 

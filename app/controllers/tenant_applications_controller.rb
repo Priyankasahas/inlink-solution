@@ -1,5 +1,11 @@
 class TenantApplicationsController < ApplicationController
+  before_filter :authenticate_user!
+  authorize_actions_for TenantApplication
+
   layout "page"
+
+  authority_actions :new_role_privilege => 'update'
+  authority_actions :add_role_privilege => 'update'
 
   def index
     @applications = TenantApplication.all

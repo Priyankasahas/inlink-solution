@@ -5,3 +5,6 @@
 require File.expand_path('../config/application', __FILE__)
 
 InlinkOnline::Application.load_tasks
+
+require 'seedbank'
+Seedbank.load_tasks if defined?(Seedbank)

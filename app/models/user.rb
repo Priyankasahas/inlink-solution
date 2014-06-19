@@ -1,13 +1,14 @@
 class User < ActiveRecord::Base
   rolify
+
+  include Authority::UserAbilities
+  include Authority::Abilities
+  self.authorizer_name = 'UserAuthorizer'
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
-
-  # Setup accessible (or protected) attributes for your model
-  # attr_accessible :email, :password, :password_confirmation, :remember_me
-  # attr_accessible :title, :body
 
   validates_confirmation_of :password, :on => :create
   validates_presence_of :first_name, :surname
@@ -15,4 +16,16 @@ class User < ActiveRecord::Base
 
   has_many :blogs
 
+  def is_admin?
+    self.has_role? :administrator
+  end
+
+  def roles_for_app(app_name)
+    app = TenantApplication.find_by_name(app_name)
+    self.roles.where(resource: app).map { |role| role.name }
+  end
+
+  def can_manage_applications
+    self.is_admin? or self.has_role? :content_administrator, Blog.application
+  end
 end

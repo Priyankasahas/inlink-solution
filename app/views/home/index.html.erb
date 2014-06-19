@@ -1,2 +1,59 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<blockquote>
+
+  <h1>Welcome!</h1> <br>
+
+  <p>This is a solution to InLink's ruby programming challenge.</p>
+
+  <p>The database design includes the below tables:</p>
+
+  <p>- <strong>User:</strong> has_many :blogs &nbsp;</p>
+
+  <p>- <strong>TenantApplication:</strong> (Blogger, Website, Contacts Manager, Leasing, etc...) has_many
+    :role_privileges</p>
+
+  <p>- <strong>Role:</strong> (User Role for an application: Location Manager, Concierige, Content Administrator,
+    Tenant)
+  </p>
+
+  <p>- <strong>RolePrivilege:</strong> (Privilege(CRUD) per role for an application) belongs_to :tenant_application</p>
+
+  <p>- <strong>Blog:</strong> (Blogger Application) belongs_to :user</p>
+
+  <p>Instructions to use this application:</p>
+
+  <p>Please migrate the database to let application access these tables: <strong>rake db:migrate</strong>&nbsp;</p>
+
+  <p>Please seed the database: <strong>rake db:seed</strong>&nbsp;</p>
+
+  <p><strong>Install gems.</strong></p>
+
+
+  <p><%= link_to "Login ", '/login' %>using the below details.</p>
+  <p><strong>Email:</strong> y.yalda@inlink.com.au</p>
+  <p><strong>Password:</strong> testing123</p>
+
+  <p>Being an admin, you have rights to manage Users. Tenant applications can be managed by an administrator or a
+    content administrator&nbsp;(This is hard coded in user model). Based on these permissions, a user can access the
+    Blog application.&nbsp;</p>
+
+  <p><strong>Gemfile:</strong></p>
+
+  <p><strong>The application is written in Ruby 2.1.1, Rails 4.1.1.</strong></p>
+
+  <p><strong>Devise:&nbsp;</strong>authenticates users.</p>
+
+  <p><strong>Rolify: </strong>manages user roles per application.</p>
+
+  <p><strong>Authority:</strong>&nbsp;manages the access based on the user roles and application privileges for the
+    respective&nbsp;role.</p>
+
+  <p><strong>Simple form:&nbsp;</strong>Forms</p>
+
+  <p><strong>Bootstrap:&nbsp;</strong>Layouts</p>
+
+  <p><strong>TimyMCE: </strong>WYSIWYG javascript interface to write blogs.</p>
+
+  <p><strong>Paper Clip:&nbsp;</strong>Upload images to blogs</p>
+
+  <p>&nbsp;</p>
+</blockquote>

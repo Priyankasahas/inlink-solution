@@ -1,7 +1,9 @@
 <div class="col-md-12">
   <h1>Blogs</h1>
 
-  <%= link_to "New Blog", new_blog_path, :class => "btn btn-success pull-right" %>
+  <% if current_user.can_create? Blog %>
+      <%= link_to "New Blog", new_blog_path, :class => "btn btn-success pull-right" %>
+  <% end %>
   <%= form_tag blogs_path, :method => 'get' do %>
       <%= text_field_tag :title, params[:title], :placeholder => "Title starts with...",
                          :class => "input-medium search-query" %>
@@ -14,14 +16,20 @@
     <div class="col-md-12">
       <blockquote>
         <div class="btn btn-group pull-right">
-          <%= link_to ' Edit', {:action => 'edit', :id => blog.id}, :class => 'btn btn-primary btn-xs' %>
-          <%= link_to 'Delete', blog_path(blog), :method => :delete, :data => {:confirm => "Are you sure you want to delete this blog?"}, :class => 'btn btn-danger btn-xs' %>
+          <% if current_user.can_update? Blog %>
+              <%= link_to ' Edit', {:action => 'edit', :id => blog.id}, :class => 'btn btn-primary btn-xs' %>
+          <% end %>
+          <% if current_user.can_delete? Blog %>
+              <%= link_to 'Delete', blog_path(blog), :method => :delete, :data => {:confirm => "Are you sure you want to delete this blog?"}, :class => 'btn btn-danger btn-xs' %>
+          <% end %>
+
         </div>
         <h2 class="lead"><%= link_to blog.title, blog_path(blog) %></h2>
 
         <p><%= truncate(blog.body, :length => 500).html_safe %></p>
 
-        <footer class="pull-right"><%= blog.user ? blog.user.first_name + '' + blog.user.surname : nil %></footer>
+        <footer class="pull-right"><%= blog.user ? blog.user.first_name + ' ' + blog.user.surname : nil %></footer>
       </blockquote>
     </div>
 <% end %>
+<%= will_paginate @blogs %>

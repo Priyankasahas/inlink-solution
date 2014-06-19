@@ -1,10 +1,8 @@
 InlinkOnline::Application.routes.draw do
-  get 'home/index'
-
-  devise_for :User, :path_names => {:sign_in => 'login', :sign_out => 'logout'}
+  devise_for :users
 
   # Devise Routes
-  devise_scope :User do
+  devise_scope :user do
     get "login", :to => "devise/sessions#new", :as => "login"
     get "logout", :to => "devise/sessions#destroy", :as => "logout"
   end
@@ -27,6 +25,8 @@ InlinkOnline::Application.routes.draw do
   end
   resources :blogs
   resources :role_privileges
+
+  post '/tinymce_assets' => 'tinymce_assets#create'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

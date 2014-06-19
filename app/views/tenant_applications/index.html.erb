@@ -9,8 +9,8 @@
           <div class="col-md-6">
             <div class="panel panel-default well">
               <div class="btn-group pull-right">
-                <%= link_to "Edit", edit_tenant_application_path(app), :class => "btn btn-primary" %>
-                <%= link_to 'Delete', tenant_application_path(app), :method => :delete, :data => {:confirm => "Are you sure you want to delete this application?"}, :class => 'btn btn-danger' %>
+                <%= link_to "Edit", edit_tenant_application_path(app), :class => "btn btn-primary btn-xs" %>
+                <%= link_to 'Delete', tenant_application_path(app), :method => :delete, :data => {:confirm => "Are you sure you want to delete this application?"}, :class => 'btn btn-danger btn-xs' %>
               </div>
               <h3><%= link_to app.name, tenant_application_path(app) %></h3>
             </div>

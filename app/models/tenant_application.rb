@@ -1,5 +1,7 @@
 class TenantApplication < ActiveRecord::Base
   resourcify
+  include Authority::Abilities
+  self.authorizer_name = 'TenantApplicationAuthorizer'
 
   has_many :role_privileges
 

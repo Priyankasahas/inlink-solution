@@ -1,4 +1,7 @@
 class RolePrivilegesController < ApplicationController
+  before_filter :authenticate_user!
+
+  authorize_actions_for RolePrivilege
 
   layout "page"
 

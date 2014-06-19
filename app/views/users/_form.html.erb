@@ -1,4 +1,4 @@
-<%= simple_form_for @user, html: {autocomplete: 'off'} do |f| %>
+<%= simple_form_for @user, :url => users_path, :method => :post, html: {autocomplete: 'off'} do |f| %>
     <%= f.error_notification %>
 
     <div class="col-md-6">

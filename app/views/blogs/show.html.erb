@@ -1,14 +1,18 @@
 <div class="col-md-12">
   <blockquote>
     <div class="btn btn-group pull-right">
-      <%= link_to ' Edit', {:action => 'edit', :id => @blog.id}, :class => 'btn btn-primary' %>
-      <%= link_to 'Delete', blog_path(@blog), :method => :delete, :data => {:confirm => "Are you sure you want to delete this blog?"}, :class => 'btn btn-danger' %>
+      <% if current_user.can_update? Blog %>
+          <%= link_to ' Edit', {:action => 'edit', :id => @blog.id}, :class => 'btn btn-primary' %>
+      <% end %>
+      <% if current_user.can_delete? Blog %>
+          <%= link_to 'Delete', blog_path(@blog), :method => :delete, :data => {:confirm => "Are you sure you want to delete this blog?"}, :class => 'btn btn-danger' %>
+      <% end %>
       <%= link_to ' Done', blogs_path, :class => 'btn btn-default' %>
     </div>
-    <h2 class="lead"><%= @blog.title%></h2>
+    <h2 class="lead"><%= @blog.title %></h2>
 
     <p><%= @blog.body.html_safe %></p>
 
-    <footer class="pull-right"><%= @blog.user ? @blog.user.first_name + '' + @blog.user.surname : nil %></footer>
+    <footer class="pull-right"><%= @blog.user ? @blog.user.first_name + ' ' + @blog.user.surname : nil %></footer>
   </blockquote>
 </div>

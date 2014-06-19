@@ -1,0 +1,8 @@
+TenantApplication.where(name: "Blog").first_or_create(description: "Blogger Application")
+TenantApplication.where(name: "Webiste").first_or_create(description: "Website Application")
+TenantApplication.where(name: "Service Content").first_or_create(description: "Service Content Application")
+TenantApplication.where(name: "Digital Gallery").first_or_create(description: "Digital Gallery Application")
+TenantApplication.where(name: "Document Manager").first_or_create(description: "Document Manager Application")
+TenantApplication.where(name: "Leasing").first_or_create(description: "Leasing Application")
+TenantApplication.where(name: "Statistics and Reports").first_or_create(description: "Statistics and Reports Application")
+TenantApplication.where(name: "Contacts Manager").first_or_create(description: "Contacts Manager Application")
